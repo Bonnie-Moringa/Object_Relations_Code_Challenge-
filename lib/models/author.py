@@ -1,6 +1,6 @@
 from lib.db.connection import get_connection
 from lib.models.article import Article
-from lib.models.magazine import Magazine
+
 
 class Author:
     def __init__(self, id=None, name=""):
@@ -33,6 +33,7 @@ class Author:
         return [Article(**row) for row in rows]
 
     def magazines(self):
+        from lib.models.magazine import Magazine
         conn = get_connection()
         cursor = conn.cursor()
         cursor.execute("""
